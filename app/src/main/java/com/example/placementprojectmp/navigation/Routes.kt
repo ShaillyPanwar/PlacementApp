@@ -6,6 +6,8 @@ package com.example.placementprojectmp.navigation
 object Routes {
     const val Splash = "splash"
     const val About = "about"
+    const val RoleSelection = "role_selection"
     const val Login = "login"
+    const val LoginWithRole = "login?role={role}"
     const val Loading = "loading"
 }

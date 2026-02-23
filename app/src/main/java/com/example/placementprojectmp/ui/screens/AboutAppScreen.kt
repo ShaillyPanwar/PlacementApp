@@ -20,12 +20,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.placementprojectmp.ui.components.AppLogo
 
 private val SECTION_LABELS = listOf("Jobs", "Internship", "Opportunity")
@@ -33,7 +33,7 @@ private val SECTION_LABELS = listOf("Jobs", "Internship", "Opportunity")
 @Composable
 fun AboutAppScreen(
     modifier: Modifier = Modifier,
-    onNavigateToLogin: (() -> Unit)? = null
+    onNavigateToRoleSelection: (() -> Unit)? = null
 ) {
     Box(
         modifier = modifier
@@ -45,21 +45,23 @@ fun AboutAppScreen(
                 .fillMaxSize()
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Top
         ) {
-            AppLogo(size = 72.dp)
             Spacer(modifier = Modifier.height(24.dp))
+            AppLogo(size = 72.dp)
+            Spacer(modifier = Modifier.height(32.dp))
             Text(
-                text = "App Opportune",
+                text = "OPPORTUNE",
                 style = MaterialTheme.typography.displayLarge.copy(
-                    fontWeight = FontWeight.Black
+                    fontWeight = FontWeight.Black,
+                    fontSize = 38.sp
                 ),
                 color = MaterialTheme.colorScheme.onSurface
             )
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(40.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
+                horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 SECTION_LABELS.forEach { label ->
@@ -70,9 +72,21 @@ fun AboutAppScreen(
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(48.dp))
+            Text(
+                text = "Get Placed",
+                style = MaterialTheme.typography.headlineMedium,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = "Build Your Future",
+                style = MaterialTheme.typography.headlineMedium,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Spacer(modifier = Modifier.weight(1f))
             Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 repeat(3) { index ->
@@ -91,10 +105,10 @@ fun AboutAppScreen(
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(32.dp))
-            if (onNavigateToLogin != null) {
+            Spacer(modifier = Modifier.height(24.dp))
+            if (onNavigateToRoleSelection != null) {
                 Button(
-                    onClick = onNavigateToLogin,
+                    onClick = onNavigateToRoleSelection,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp),
@@ -103,6 +117,7 @@ fun AboutAppScreen(
                     Text("Get Started")
                 }
             }
+            Spacer(modifier = Modifier.height(24.dp))
         }
     }
 }

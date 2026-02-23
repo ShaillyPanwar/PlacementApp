@@ -16,6 +16,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -36,6 +38,7 @@ private const val ICON_BOX_SIZE_DP = 72
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,
+    selectedRole: String = "user",
     onNavigateToLoading: () -> Unit = {}
 ) {
     var username by remember { mutableStateOf("") }
@@ -64,23 +67,7 @@ fun LoginScreen(
                 modifier = Modifier
                     .size(ICON_BOX_SIZE_DP.dp)
                     .background(
-                        MaterialTheme.colorScheme.surfaceVariant,
-                        RoundedCornerShape(12.dp)
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                androidx.compose.foundation.Image(
-                    painter = painterResource(R.drawable.ic_github),
-                    contentDescription = null,
-                    modifier = Modifier.size(40.dp)
-                )
-            }
-            Spacer(modifier = Modifier.size(16.dp))
-            Box(
-                modifier = Modifier
-                    .size(ICON_BOX_SIZE_DP.dp)
-                    .background(
-                        MaterialTheme.colorScheme.surfaceVariant,
+                        Color.White,
                         RoundedCornerShape(12.dp)
                     ),
                 contentAlignment = Alignment.Center
@@ -91,11 +78,27 @@ fun LoginScreen(
                     modifier = Modifier.size(40.dp)
                 )
             }
+            Spacer(modifier = Modifier.size(16.dp))
+            Box(
+                modifier = Modifier
+                    .size(ICON_BOX_SIZE_DP.dp)
+                    .background(
+                        Color.White,
+                        RoundedCornerShape(12.dp)
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                androidx.compose.foundation.Image(
+                    painter = painterResource(R.drawable.ic_github),
+                    contentDescription = null,
+                    modifier = Modifier.size(40.dp)
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = "Sign Up or Login",
+            text = "Sign up or Login",
             style = MaterialTheme.typography.headlineMedium,
             color = MaterialTheme.colorScheme.onSurface
         )
@@ -150,6 +153,17 @@ fun LoginScreen(
                 unfocusedContainerColor = MaterialTheme.colorScheme.surface
             )
         )
+
+        TextButton(
+            onClick = { },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Forgot your password?",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
         Button(

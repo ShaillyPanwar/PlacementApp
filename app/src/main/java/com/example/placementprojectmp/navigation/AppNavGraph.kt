@@ -6,12 +6,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import androidx.navigation.compose.rememberNavController
 import com.example.placementprojectmp.ui.screens.AboutAppScreen
 import com.example.placementprojectmp.ui.screens.LoadingScreen
 import com.example.placementprojectmp.ui.screens.LoginScreen
+import com.example.placementprojectmp.ui.screens.RoleSelectionScreen
 import com.example.placementprojectmp.ui.screens.SplashScreen
 
 @Composable
@@ -42,8 +45,19 @@ fun AppNavGraph(
         composable(Routes.About) {
             AboutAppScreen(
                 modifier = modifier,
-                onNavigateToLogin = {
-                    navController.navigate(Routes.Login) {
+                onNavigateToRoleSelection = {
+                    navController.navigate(Routes.RoleSelection) {
+                        launchSingleTop = true
+                    }
+                }
+            )
+        }
+
+        composable(Routes.RoleSelection) {
+            RoleSelectionScreen(
+                modifier = modifier,
+                onNavigateToLogin = { role ->
+                    navController.navigate("login?role=$role") {
                         launchSingleTop = true
                     }
                 }
@@ -53,6 +67,25 @@ fun AppNavGraph(
         composable(Routes.Login) {
             LoginScreen(
                 modifier = modifier,
+                selectedRole = "user",
+                onNavigateToLoading = {
+                    navController.navigate(Routes.Loading) {
+                        launchSingleTop = true
+                    }
+                }
+            )
+        }
+
+        composable(
+            route = Routes.LoginWithRole,
+            arguments = listOf(
+                navArgument("role") { type = NavType.StringType; defaultValue = "user" }
+            )
+        ) { backStackEntry ->
+            val role = backStackEntry.arguments?.getString("role") ?: "user"
+            LoginScreen(
+                modifier = modifier,
+                selectedRole = role,
                 onNavigateToLoading = {
                     navController.navigate(Routes.Loading) {
                         launchSingleTop = true
