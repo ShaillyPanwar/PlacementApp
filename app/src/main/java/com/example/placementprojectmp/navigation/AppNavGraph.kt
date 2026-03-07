@@ -16,6 +16,7 @@ import com.example.placementprojectmp.ui.screens.LoadingScreen
 import com.example.placementprojectmp.ui.screens.LoginScreen
 import com.example.placementprojectmp.ui.screens.RoleSelectionScreen
 import com.example.placementprojectmp.ui.screens.SplashScreen
+import com.example.placementprojectmp.ui.screens.StudentDashboardScreen
 
 @Composable
 fun AppNavGraph(
@@ -103,13 +104,9 @@ fun AppNavGraph(
             )
         }
 
-        // 5. Role-based dashboards (placeholder: replace with module-specific NavHost/screens when ready)
+        // 5. Role-based dashboards
         composable(Routes.DashboardStudent) {
-            LoadingScreen(
-                modifier = modifier,
-                isSignUp = false,
-                onNavigateToAbout = null
-            )
+            StudentDashboardScreen(modifier = modifier)
         }
         composable(Routes.DashboardAdmin) {
             LoadingScreen(
