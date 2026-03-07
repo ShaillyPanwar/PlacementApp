@@ -57,7 +57,7 @@ private fun dummySemesterData(semesterTitle: String): List<SubjectData> {
 }
 
 @Composable
-fun StudentAcademicPerformanceScreen(
+fun AcademicPerdormanceScreen(
     modifier: Modifier = Modifier,
     onMenuClick: () -> Unit = {},
     onNotificationClick: () -> Unit = {}

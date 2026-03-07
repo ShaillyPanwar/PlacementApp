@@ -12,11 +12,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.compose.rememberNavController
 import com.example.placementprojectmp.ui.screens.AboutAppScreen
+import com.example.placementprojectmp.ui.screens.AcademicPerdormanceScreen
 import com.example.placementprojectmp.ui.screens.LoadingScreen
 import com.example.placementprojectmp.ui.screens.LoginScreen
 import com.example.placementprojectmp.ui.screens.RoleSelectionScreen
 import com.example.placementprojectmp.ui.screens.SplashScreen
 import com.example.placementprojectmp.ui.screens.ProfileScreen
+import com.example.placementprojectmp.ui.screens.PreparationScreen
 import com.example.placementprojectmp.ui.screens.StudentDashboardScreen
 
 @Composable
@@ -26,7 +28,7 @@ fun AppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Routes.Profile,
+        startDestination = Routes.Preparation,
         modifier = modifier
     ) {
         // 1. Splash → About (splash is removed from back stack)
@@ -126,6 +128,14 @@ fun AppNavGraph(
 
         composable(Routes.Profile) {
             ProfileScreen(modifier = modifier)
+        }
+
+        composable(Routes.AcademicDetails) {
+            AcademicPerdormanceScreen(modifier = modifier)
+        }
+
+        composable(Routes.Preparation) {
+            PreparationScreen(modifier = modifier)
         }
 
         composable(Routes.Loading) {
