@@ -20,6 +20,7 @@ import com.example.placementprojectmp.ui.screens.SplashScreen
 import com.example.placementprojectmp.ui.screens.ProfileScreen
 import com.example.placementprojectmp.ui.screens.ChatbotScreen
 import com.example.placementprojectmp.ui.screens.PreparationScreen
+import com.example.placementprojectmp.ui.screens.StudentDetailsScreen
 import com.example.placementprojectmp.ui.screens.StudentDashboardScreen
 
 @Composable
@@ -29,7 +30,7 @@ fun AppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Routes.Chatbot,
+        startDestination = Routes.StudentDetails,
         modifier = modifier
     ) {
         // 1. Splash → About (splash is removed from back stack)
@@ -141,6 +142,10 @@ fun AppNavGraph(
 
         composable(Routes.Chatbot) {
             ChatbotScreen(modifier = modifier)
+        }
+
+        composable(Routes.StudentDetails) {
+            StudentDetailsScreen(modifier = modifier)
         }
 
         composable(Routes.Loading) {

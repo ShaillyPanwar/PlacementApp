@@ -6,7 +6,7 @@ package com.example.placementprojectmp.navigation
  *
  * START DESTINATION: Change the line below to launch any screen when the app opens.
  * Options: Splash, About, Login, RoleSelection, Loading, Profile,
- *          AcademicDetails, Preparation, Chatbot, DashboardStudent, DashboardAdmin, DashboardManagement
+ *          AcademicDetails, Preparation, Chatbot, StudentDetails, DashboardStudent, DashboardAdmin, DashboardManagement
  */
 object Routes {
     const val Splash = "splash"
@@ -19,6 +19,7 @@ object Routes {
     const val AcademicDetails = "academic"
     const val Preparation = "preparation"
     const val Chatbot = "chatbot"
+    const val StudentDetails = "student_details"
 
     /** Role-based dashboard routes. Add new roles here when adding modules. */
     const val DashboardStudent = "dashboard/student"
