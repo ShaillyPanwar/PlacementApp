@@ -21,7 +21,6 @@ import com.example.placementprojectmp.ui.screens.ProfileScreen
 import com.example.placementprojectmp.ui.screens.ChatbotScreen
 import com.example.placementprojectmp.ui.screens.PreparationScreen
 import com.example.placementprojectmp.ui.screens.OpportunitiesScreen
-import com.example.placementprojectmp.ui.screens.PersonalInformationForm
 import com.example.placementprojectmp.ui.screens.StudentDetailsScreen
 import com.example.placementprojectmp.ui.screens.StudentDashboardScreen
 import com.example.placementprojectmp.ui.screens.StudentProfileFormScreen
@@ -33,7 +32,7 @@ fun AppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Routes.PersonalInformationForm,
+        startDestination = Routes.StudentProfileForm,
         modifier = modifier
     ) {
         // 1. Splash → About (splash is removed from back stack)
@@ -157,10 +156,6 @@ fun AppNavGraph(
 
         composable(Routes.StudentProfileForm) {
             StudentProfileFormScreen(modifier = modifier)
-        }
-
-        composable(Routes.PersonalInformationForm) {
-            PersonalInformationForm(modifier = modifier)
         }
 
         composable(Routes.Loading) {

@@ -51,7 +51,7 @@ fun PersonalInformationForm(
             .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        // First row: Left 70% (Full Name, Username, Connect Profile) | Right 30% (Profile photo card)
+        // First row: Left 70% (Full Name, Username) | Right 30% (Profile photo card)
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -72,14 +72,6 @@ fun PersonalInformationForm(
                     onValueChange = { username = it },
                     placeholder = "Enter username"
                 )
-                ConnectProfileRow(
-                    expandedPlatform = expandedPlatform,
-                    urlValues = urlValues,
-                    onUrlChange = { p, v -> urlValues = urlValues + (p to v) },
-                    onExpandToggle = { p ->
-                        expandedPlatform = if (expandedPlatform == p) null else p
-                    }
-                )
             }
             Column(
                 modifier = Modifier.weight(0.3f),
@@ -88,6 +80,17 @@ fun PersonalInformationForm(
                 ProfilePhotoCard()
             }
         }
+
+        // Connect Your Profile: full width; LazyRow scrolls horizontally with outlined cards
+        ConnectProfileRow(
+            expandedPlatform = expandedPlatform,
+            urlValues = urlValues,
+            onUrlChange = { p, v -> urlValues = urlValues + (p to v) },
+            onExpandToggle = { p ->
+                expandedPlatform = if (expandedPlatform == p) null else p
+            },
+            modifier = Modifier.fillMaxWidth()
+        )
 
         PhoneInputRow(
             countryCode = countryCode,
