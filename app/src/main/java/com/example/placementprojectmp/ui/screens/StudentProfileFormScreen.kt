@@ -82,4 +82,5 @@ private fun sectionTitleFor(tab: ProfileFormTab): String = when (tab) {
     ProfileFormTab.Education -> "Education Profile"
     ProfileFormTab.Skills -> "Skills Profile"
     ProfileFormTab.Experience -> "Experience Profile"
+    ProfileFormTab.Projects -> "Projects Profile"
 }

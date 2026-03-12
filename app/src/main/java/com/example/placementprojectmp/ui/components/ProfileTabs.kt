@@ -18,7 +18,8 @@ enum class ProfileFormTab {
     Personal,
     Education,
     Skills,
-    Experience
+    Experience,
+    Projects
 }
 
 /**
@@ -64,6 +65,7 @@ private fun ProfileFormTab.label(): String = when (this) {
     ProfileFormTab.Education -> "Education"
     ProfileFormTab.Skills -> "Skills"
     ProfileFormTab.Experience -> "Experience"
+    ProfileFormTab.Projects -> "Projects"
 }
 
 /** Dummy completion: Personal completed, rest not. */
@@ -71,5 +73,6 @@ private fun defaultCompletionState(): Map<ProfileFormTab, Boolean> = mapOf(
     ProfileFormTab.Personal to true,
     ProfileFormTab.Education to false,
     ProfileFormTab.Skills to false,
-    ProfileFormTab.Experience to false
+    ProfileFormTab.Experience to false,
+    ProfileFormTab.Projects to false
 )

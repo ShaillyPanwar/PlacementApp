@@ -17,7 +17,7 @@ import com.example.placementprojectmp.ui.screens.PersonalInformationForm
 
 /**
  * Form content area for profile form tabs.
- * Personal / Education / Skills / Experience show respective form content inline.
+ * Personal / Education / Skills / Experience / Projects show respective form content inline.
  */
 @Composable
 fun FormSection(
@@ -42,6 +42,7 @@ fun FormSection(
                 ProfileFormTab.Education -> EducationInformationForm(modifier = Modifier.fillMaxWidth())
                 ProfileFormTab.Skills -> SkillsFormContent(modifier = Modifier.fillMaxWidth())
                 ProfileFormTab.Experience -> ExperienceFormContent(modifier = Modifier.fillMaxWidth())
+                ProfileFormTab.Projects -> ProjectsFormContent(modifier = Modifier.fillMaxWidth())
             }
         }
     }
