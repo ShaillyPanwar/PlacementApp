@@ -27,6 +27,7 @@ object Routes {
     const val DashboardAdmin = "dashboard/admin"
     const val DashboardManagement = "dashboard/management"
     const val StudentProfileForm = "dashboard/studentform"
+    const val ApplicationScreen = "application_screen"
 
     /**
      * Start destination when the app launches.
