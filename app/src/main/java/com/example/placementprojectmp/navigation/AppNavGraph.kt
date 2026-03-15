@@ -27,6 +27,9 @@ import com.example.placementprojectmp.ui.screens.StudentProfileFormScreen
 import com.example.placementprojectmp.ui.screens.ApplicationScreen
 import com.example.placementprojectmp.ui.screens.ApplicationStatusScreen
 import com.example.placementprojectmp.ui.screens.PyqQuestionsScreen
+import com.example.placementprojectmp.ui.screens.AptitudeTestDetailsScreen
+import com.example.placementprojectmp.ui.screens.AptitudeTestPlayerScreen
+import com.example.placementprojectmp.ui.screens.AptitudeTestResultScreen
 
 @Composable
 fun AppNavGraph(
@@ -146,7 +149,51 @@ fun AppNavGraph(
                 modifier = modifier,
                 onNavigateToPyqQuestions = { company ->
                     navController.navigate("pyq_questions/$company")
+                },
+                onNavigateToAptitudeTestDetails = { testId ->
+                    navController.navigate("aptitude_test_details_screen/$testId")
                 }
+            )
+        }
+
+        composable(
+            route = Routes.AptitudeTestDetailsWithId,
+            arguments = listOf(
+                navArgument("testId") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val testId = backStackEntry.arguments?.getString("testId") ?: ""
+            AptitudeTestDetailsScreen(
+                modifier = modifier,
+                testId = testId,
+                onStartTest = {
+                    navController.navigate("aptitude_test_player_screen/$testId")
+                }
+            )
+        }
+
+        composable(
+            route = Routes.AptitudeTestPlayerWithId,
+            arguments = listOf(
+                navArgument("testId") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val testId = backStackEntry.arguments?.getString("testId") ?: ""
+            AptitudeTestPlayerScreen(
+                modifier = modifier,
+                testId = testId,
+                onSubmit = {
+                    navController.navigate(Routes.AptitudeTestResult) {
+                        popUpTo("aptitude_test_player_screen/$testId") { inclusive = true }
+                    }
+                }
+            )
+        }
+
+        composable(Routes.AptitudeTestResult) {
+            AptitudeTestResultScreen(
+                modifier = modifier,
+                testId = null
             )
         }
 

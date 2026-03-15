@@ -42,6 +42,7 @@ private fun dummyResourcesForFolder(folder: String): List<Pair<String, String>> 
         "Topic_Checklist.pdf" to "approved@college.edu",
         "Revision_Sheet.pdf" to "faculty@college.edu"
     )
+    "Aptitude Test" -> emptyList()
     else -> listOf(
         "Sample.pdf" to "approved@college.edu"
     )
@@ -52,7 +53,8 @@ fun PreparationScreen(
     modifier: Modifier = Modifier,
     onMenuClick: () -> Unit = {},
     onNotificationClick: () -> Unit = {},
-    onNavigateToPyqQuestions: (String) -> Unit = {}
+    onNavigateToPyqQuestions: (String) -> Unit = {},
+    onNavigateToAptitudeTestDetails: (String) -> Unit = {}
 ) {
     var selectedFolder by remember { mutableStateOf<String?>(null) }
     val glassBackground = MaterialTheme.colorScheme.surface.copy(alpha = 0.98f)
@@ -82,6 +84,7 @@ fun PreparationScreen(
         item {
             ResourceFolderRow(
                 modifier = Modifier.padding(horizontal = 20.dp),
+                folders = listOf("Notes", "PYQ", "Resources", "Cheat Codes", "Aptitude Test"),
                 onFolderClick = { folder -> selectedFolder = folder }
             )
         }
@@ -95,6 +98,10 @@ fun PreparationScreen(
             onPyqCompanyClick = { company ->
                 selectedFolder = null
                 onNavigateToPyqQuestions(company)
+            },
+            onAptitudeTestClick = { testId ->
+                selectedFolder = null
+                onNavigateToAptitudeTestDetails(testId)
             }
         )
     }

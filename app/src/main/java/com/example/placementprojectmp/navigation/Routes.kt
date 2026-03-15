@@ -31,6 +31,12 @@ object Routes {
     const val ApplicationStatusScreen = "application_status_screen"
     const val PyqQuestions = "pyq_questions"
     const val PyqQuestionsWithCompany = "pyq_questions/{company}"
+    const val AptitudeTestDetails = "aptitude_test_details_screen"
+    const val AptitudeTestDetailsWithId = "aptitude_test_details_screen/{testId}"
+    const val AptitudeTestPlayer = "aptitude_test_player_screen"
+    const val AptitudeTestPlayerWithId = "aptitude_test_player_screen/{testId}"
+    const val AptitudeTestResult = "aptitude_test_result_screen"
+    const val AptitudeTestResultWithId = "aptitude_test_result_screen/{testId}"
 
     /**
      * Start destination when the app launches.

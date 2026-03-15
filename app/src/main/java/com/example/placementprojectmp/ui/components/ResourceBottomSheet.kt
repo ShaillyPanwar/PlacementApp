@@ -52,6 +52,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.placementprojectmp.data.AptitudeTestRepository
 
 /** Dummy data for Notes bottom sheet: (fileName, uploaderDisplayName). */
 private val notesDummyItems = listOf(
@@ -88,13 +89,15 @@ fun ResourceBottomSheet(
     folderTitle: String,
     resources: List<Pair<String, String>>,
     onDismissRequest: () -> Unit,
-    onPyqCompanyClick: (String) -> Unit = {}
+    onPyqCompanyClick: (String) -> Unit = {},
+    onAptitudeTestClick: (String) -> Unit = {}
 ) {
     val sheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = false
     )
     val screenHeightDp = LocalConfiguration.current.screenHeightDp
     val isPYQ = folderTitle == "PYQ"
+    val isAptitudeTest = folderTitle == "Aptitude Test"
     val isNotesOrCheatSheet = folderTitle == "Notes" || folderTitle == "Cheat Codes"
     val displayTitle = if (folderTitle == "Cheat Codes") "Cheat Sheet" else folderTitle
     val listItems = when (folderTitle) {
@@ -112,6 +115,11 @@ fun ResourceBottomSheet(
             PyqBottomSheetContent(
                 screenHeightDp = screenHeightDp,
                 onCompanyClick = onPyqCompanyClick
+            )
+        } else if (isAptitudeTest) {
+            AptitudeTestBottomSheetContent(
+                screenHeightDp = screenHeightDp,
+                onTestClick = onAptitudeTestClick
             )
         } else if (isNotesOrCheatSheet) {
             LazyColumn(
@@ -343,6 +351,40 @@ private fun PyqBottomSheetContent(
                 companyName = companyName,
                 roleSubtitle = roleSubtitle,
                 onClick = { onCompanyClick(companyName) }
+            )
+        }
+    }
+}
+
+@Composable
+private fun AptitudeTestBottomSheetContent(
+    screenHeightDp: Int,
+    onTestClick: (String) -> Unit
+) {
+    val tests = remember { AptitudeTestRepository.getAllTests() }
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(max = (screenHeightDp * 0.75f).toInt().dp)
+            .padding(horizontal = 20.dp)
+            .padding(bottom = 24.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        contentPadding = PaddingValues(bottom = 16.dp)
+    ) {
+        item {
+            Text(
+                text = "Aptitude Test",
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onSurface,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+        }
+        items(tests) { test ->
+            AptitudeTestCard(
+                testName = test.title,
+                description = "Practice test • ${test.totalQuestions} questions • ${test.timeMinutes} min",
+                onClick = { onTestClick(test.id) }
             )
         }
     }
