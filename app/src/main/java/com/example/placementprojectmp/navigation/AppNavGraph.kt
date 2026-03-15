@@ -26,6 +26,7 @@ import com.example.placementprojectmp.ui.screens.StudentDashboardScreen
 import com.example.placementprojectmp.ui.screens.StudentProfileFormScreen
 import com.example.placementprojectmp.ui.screens.ApplicationScreen
 import com.example.placementprojectmp.ui.screens.ApplicationStatusScreen
+import com.example.placementprojectmp.ui.screens.PyqQuestionsScreen
 
 @Composable
 fun AppNavGraph(
@@ -34,7 +35,7 @@ fun AppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Routes.ApplicationStatusScreen,
+        startDestination = Routes.Preparation,
         modifier = modifier
     ) {
         // 1. Splash → About (splash is removed from back stack)
@@ -141,7 +142,25 @@ fun AppNavGraph(
         }
 
         composable(Routes.Preparation) {
-            PreparationScreen(modifier = modifier)
+            PreparationScreen(
+                modifier = modifier,
+                onNavigateToPyqQuestions = { company ->
+                    navController.navigate("pyq_questions/$company")
+                }
+            )
+        }
+
+        composable(
+            route = Routes.PyqQuestionsWithCompany,
+            arguments = listOf(
+                navArgument("company") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val company = backStackEntry.arguments?.getString("company") ?: ""
+            PyqQuestionsScreen(
+                modifier = modifier,
+                companyName = company
+            )
         }
 
         composable(Routes.Chatbot) {

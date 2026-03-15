@@ -51,7 +51,8 @@ private fun dummyResourcesForFolder(folder: String): List<Pair<String, String>> 
 fun PreparationScreen(
     modifier: Modifier = Modifier,
     onMenuClick: () -> Unit = {},
-    onNotificationClick: () -> Unit = {}
+    onNotificationClick: () -> Unit = {},
+    onNavigateToPyqQuestions: (String) -> Unit = {}
 ) {
     var selectedFolder by remember { mutableStateOf<String?>(null) }
     val glassBackground = MaterialTheme.colorScheme.surface.copy(alpha = 0.98f)
@@ -90,7 +91,11 @@ fun PreparationScreen(
         ResourceBottomSheet(
             folderTitle = folder,
             resources = dummyResourcesForFolder(folder),
-            onDismissRequest = { selectedFolder = null }
+            onDismissRequest = { selectedFolder = null },
+            onPyqCompanyClick = { company ->
+                selectedFolder = null
+                onNavigateToPyqQuestions(company)
+            }
         )
     }
 }

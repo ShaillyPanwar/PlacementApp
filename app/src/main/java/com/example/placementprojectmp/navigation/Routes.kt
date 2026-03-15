@@ -29,6 +29,8 @@ object Routes {
     const val StudentProfileForm = "dashboard/studentform"
     const val ApplicationScreen = "application_screen"
     const val ApplicationStatusScreen = "application_status_screen"
+    const val PyqQuestions = "pyq_questions"
+    const val PyqQuestionsWithCompany = "pyq_questions/{company}"
 
     /**
      * Start destination when the app launches.
