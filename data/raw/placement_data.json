@@ -1,0 +1,101 @@
+[
+  {
+    "company_name": "TCS",
+    "sector": "IT",
+    "cgpa_requirement": 7.0,
+    "eligible_branches": [
+      "CSE",
+      "IT",
+      "ECE"
+    ],
+    "backlogs_allowed": "As per policy",
+    "ctc": "13.5 LPA",
+    "stipend": "30000",
+    "drive_date": "2024-12-15",
+    "application_deadline": "2024-12-01",
+    "selection_process": [
+      "Online Test",
+      "Technical Interview",
+      "HR Round"
+    ],
+    "internship_duration": "6 months",
+    "internship_location": "India",
+    "placement_stats": {
+      "2023": {
+        "total_offers": 45,
+        "avg_ctc": "13.2 LPA"
+      },
+      "2022": {
+        "total_offers": 38,
+        "avg_ctc": "12.8 LPA"
+      }
+    },
+    "source": "JIMS Rohini Official Website"
+  },
+  {
+    "company_name": "Infosys",
+    "sector": "IT",
+    "cgpa_requirement": 6.5,
+    "eligible_branches": [
+      "CSE",
+      "IT",
+      "ECE",
+      "Mechanical"
+    ],
+    "backlogs_allowed": "As per policy",
+    "ctc": "12.5 LPA",
+    "stipend": "25000",
+    "drive_date": "2024-12-20",
+    "application_deadline": "2024-12-05",
+    "selection_process": [
+      "Written Test",
+      "Technical Interview",
+      "HR Round"
+    ],
+    "internship_duration": "6 months",
+    "internship_location": "India",
+    "placement_stats": {
+      "2023": {
+        "total_offers": 52,
+        "avg_ctc": "12.1 LPA"
+      },
+      "2022": {
+        "total_offers": 48,
+        "avg_ctc": "11.8 LPA"
+      }
+    },
+    "source": "JIMS Rohini Official Website"
+  },
+  {
+    "company_name": "Wipro",
+    "sector": "IT",
+    "cgpa_requirement": 6.0,
+    "eligible_branches": [
+      "CSE",
+      "IT"
+    ],
+    "backlogs_allowed": "As per policy",
+    "ctc": "11.5 LPA",
+    "stipend": "20000",
+    "drive_date": "2024-12-25",
+    "application_deadline": "2024-12-10",
+    "selection_process": [
+      "Online Assessment",
+      "Technical Round",
+      "HR Round"
+    ],
+    "internship_duration": "6 months",
+    "internship_location": "India",
+    "placement_stats": {
+      "2023": {
+        "total_offers": 35,
+        "avg_ctc": "11.2 LPA"
+      },
+      "2022": {
+        "total_offers": 30,
+        "avg_ctc": "10.9 LPA"
+      }
+    },
+    "source": "JIMS Rohini Official Website"
+  }
+]
